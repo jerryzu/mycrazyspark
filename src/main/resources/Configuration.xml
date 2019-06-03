@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties" />
+	<typeAliases>
+		<package name="com/mybatis/config" />
+	</typeAliases>
+
+	<environments default="platform">
+		<environment id="platform">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${dev.driver}" />
+				<property name="url" value="${dev.url}" />
+				<property name="username" value="${dev.username}" />
+				<property name="password" value="${dev.password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="product">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${prod.driver}" />
+				<property name="url" value="${prod.url}" />
+				<property name="username" value="${prod.username}" />
+				<property name="password" value="${prod.password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="uat">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${qa.driver}" />
+				<property name="url" value="${qa.url}" />
+				<property name="username" value="${qa.username}" />
+				<property name="password" value="${qa.password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="demo">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${demo.driver}" />
+				<property name="url" value="${demo.url}" />
+				<property name="username" value="${demo.username}" />
+				<property name="password" value="${demo.password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="txbs">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${txbs.driver}" />
+				<property name="url" value="${txbs.url}" />
+				<property name="username" value="${txbs.username}" />
+				<property name="password" value="${txbs.password}" />
+				<property name="poolMaximumActiveConnections" value="50" />
+				<property name="poolMaximumIdleConnections" value="50" />
+			</dataSource>
+		</environment>
+		<environment id="jndi">
+			<transactionManager type="JDBC" />
+			<!-- 在Web容器中配置数据源，通过JNDI动态查找 -->
+			<dataSource type="JNDI">
+				<property name="initial_context" value="java:comp/env" />
+				<property name="data_source" value="jndi/mybatis" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<!-- <mapper resource="com/mybatis/config/UserDaoMapper.xml"/> -->
+	</mappers>
+</configuration>
